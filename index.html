@@ -26,6 +26,7 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
+      <li>item5</li>
     </ul>
    </div>
   </div>
@@ -51,12 +52,21 @@
   // document.all[10].textContent="Hello ashoka"
   // console.log(document.form);
 
-  let list=document.getElementsByClassName("list-group-item");
-  list[2].style.backgroundColor="red";
+  // let list=document.getElementsByClassName("list-group-item");
+  // list[2].style.backgroundColor="red";
 
+  // for(let i=0;i<list.length;i++){
+  //   list[i].style.fontWeight="bold"
+  // }
+  let list =document.getElementsByTagName("li");
+  console.log(list);
+  
+  
   for(let i=0;i<list.length;i++){
-    list[i].style.fontWeight="bold"
+    list[i].style.fontWeight="bold";
   }
+  
+
 
 </script>
 </html>
