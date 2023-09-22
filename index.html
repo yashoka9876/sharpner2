@@ -15,136 +15,67 @@
   </header>
   <div class="container">
    <div id="main" class="card card-body">
-    <h2 class="title">Add Items</h2>
-    <form class="form-inline mb-3">
-      <input type="text" class="form-control mr-2">
-      <input type="submit" class="btn btn-dark" value="Submit">
-    </form>
-    <h2 class="title">Items</h2>
-    <ul id="items" class="list-group">
-      <li class="list-group-item">Item 1</li>
-      <li class="list-group-item">Item 2</li>
-      <li class="list-group-item">Item 3</li>
-      <li class="list-group-item">Item 4</li>
-    </ul>
+      <h2 class="title">Add Items</h2>
+      <form id="addForm" class="form-inline mb-3">
+        <input type="text" class="form-control mr-2" id="item">
+        <input type="submit" class="btn btn-dark" value="Submit">
+      </form>
+      <h2 class="title">Items</h2>
+      <ul id="items" class="list-group">
+        <li class="list-group-item">Item 1 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
+        <li class="list-group-item">Item 2 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
+        <li class="list-group-item">Item 3 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
+        <li class="list-group-item">Item 4 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
+      </ul>
    </div>
   </div>
 
 </body>
 <script>
 
-let itemList=document.querySelector("#items");
-// console.log(itemList.parentElement.style.backgroundColor="#f2f2f2");
-// console.log(itemList.childNodes)
-// console.log(itemList.children);
-// console.log(itemList.children[1]);   
-// itemList.children[1].style.backgroundColor="red";
-
-//firstchild 
-// console.log(itemList.firstEChild)
-// console.log(itemList.firstElementChild);
-
-// itemList.firstElementChild.textContent='Hello 1';
-
-// console.log(itemList.lastElementChild.textContent="Ashoka Yadav")
-
-
-//nextSibling
-
-// console.log(itemList.nextSibling)
-// console.log(itemList.nextElementSibling)
-
-//previousSibling
-
-// console.log(itemList.previousElementSibling);
-
-let newDiv=document.createElement("div")
-newDiv.className="hello";
-newDiv.id="by";
-newDiv.setAttribute("title","Heloo dib");
-
-let textNode=document.createTextNode("Hello Ashoka yadva");
-newDiv.appendChild(textNode)
-console.log(newDiv);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var header=document.querySelector(".list-group-item:nth-child(2)");
-// header.style.color="red";
-// // var header1=document.querySelector(".list-group-item:nth-child(3)")
-// // header1.style.display="none";
-
-// //that is class name so please use .
-// var title=document.querySelectorAll(".title");
-// title[0].textContent="Ashoka Yadav";
-
-// var odd=document.querySelectorAll("li:nth-child(odd)");
-
-// for(var i=0;i<odd.length;i++){
-//   odd[i].style.backgroundColor="#f4f4f4";
-// }
-
-
-//   let data=document.getElementById("header-title");
-//   let main_header=document.getElementById("main-header");
-//   main_header.style.borderBottom="5px solid black";
-
-//   let title=document.getElementsByClassName("title");
-// title[0].style.fontWeight="bold";
-// title[0].style.color="green";
-//Examile the document object
-  // console.log(document)
-  // console.log(document.domain)
-  // console.log(document.URL);
-  // console.log(document.title)
-  // document.title="123"
-  // console.log(document.head);
-  // console.log(document.body);
-  // console.log(document.all);
-  // document.all[10].textContent="Hello ashoka"
-  // console.log(document.form);
-
-  // let list1=document.getElementsByClassName("list-group-item");
-  // // list[2].style.backgroundColor="red";
-
-  // // for(let i=0;i<list.length;i++){
-  // //   list[i].style.fontWeight="bold"
-  // // }
-  // let list =document.getElementsByTagName("li");
-  // console.log(list);
+  let form=document.getElementById("addForm");
   
+  let ulist=document.getElementById("items")
+  ulist.addEventListener("click",removefun)
   
-  // for(let i=0;i<list.length;i++){
-  //   list[i].style.fontWeight="bold";
-  // }
+  form.addEventListener("submit",addItem);
   
-  // console.log(typeof list1)
+  function addItem(e){ 
+    e.preventDefault();
+    let newItem=document.getElementById('item').value;
+    let textNode=document.createTextNode(newItem);
+     console.log(textNode);
 
+     //creating list
+    let list=document.createElement("li");
+    list.className="list-group-item";
+    list.appendChild(textNode);
+   
+    list.appendChild
+    
 
- 
+    console.log(list);
+
+    ulist.appendChild(list);
+
+   
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    //create button
+    let btn=document.createElement("button");
+    btn.className="btn btn-danger btn-sm float-right delete";
+    btn.textContent="X";
+    list.appendChild(btn);
+  }
+  function removefun(e){
+   if(e.target.classList.contains('delete')){
+    if(confirm('Are you Sure?')){
+      var li=e.target.parentElement;
+      ulist.removeChild(li);
+    }
+   }
+
+  }
+
 
 
 </script>
