@@ -32,13 +32,13 @@
 
 </body>
 <script>
-  let data=document.getElementById("header-title");
-  let main_header=document.getElementById("main-header");
-  main_header.style.borderBottom="5px solid black";
+//   let data=document.getElementById("header-title");
+//   let main_header=document.getElementById("main-header");
+//   main_header.style.borderBottom="5px solid black";
 
-  let title=document.getElementsByClassName("title");
-title[0].style.fontWeight="bold";
-title[0].style.color="green";
+//   let title=document.getElementsByClassName("title");
+// title[0].style.fontWeight="bold";
+// title[0].style.color="green";
 //Examile the document object
   // console.log(document)
   // console.log(document.domain)
@@ -48,8 +48,15 @@ title[0].style.color="green";
   // console.log(document.head);
   // console.log(document.body);
   // console.log(document.all);
-  document.all[10].textContent="Hello ashoka"
-  console.log(document.form);
+  // document.all[10].textContent="Hello ashoka"
+  // console.log(document.form);
+
+  let list=document.getElementsByClassName("list-group-item");
+  list[2].style.backgroundColor="red";
+
+  for(let i=0;i<list.length;i++){
+    list[i].style.fontWeight="bold"
+  }
 
 </script>
 </html>
