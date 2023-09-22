@@ -26,13 +26,46 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
-      <li>item5</li>
     </ul>
    </div>
   </div>
 
 </body>
 <script>
+
+var header=document.querySelector(".list-group-item:nth-child(2)");
+header.style.color="red";
+// var header1=document.querySelector(".list-group-item:nth-child(3)")
+// header1.style.display="none";
+
+//that is class name so please use .
+var title=document.querySelectorAll(".title");
+title[0].textContent="Ashoka Yadav";
+
+var odd=document.querySelectorAll("li:nth-child(odd)");
+
+for(var i=0;i<odd.length;i++){
+  odd[i].style.backgroundColor="#f4f4f4";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //   let data=document.getElementById("header-title");
 //   let main_header=document.getElementById("main-header");
 //   main_header.style.borderBottom="5px solid black";
@@ -52,20 +85,24 @@
   // document.all[10].textContent="Hello ashoka"
   // console.log(document.form);
 
-  // let list=document.getElementsByClassName("list-group-item");
-  // list[2].style.backgroundColor="red";
+  // let list1=document.getElementsByClassName("list-group-item");
+  // // list[2].style.backgroundColor="red";
 
+  // // for(let i=0;i<list.length;i++){
+  // //   list[i].style.fontWeight="bold"
+  // // }
+  // let list =document.getElementsByTagName("li");
+  // console.log(list);
+  
+  
   // for(let i=0;i<list.length;i++){
-  //   list[i].style.fontWeight="bold"
+  //   list[i].style.fontWeight="bold";
   // }
-  let list =document.getElementsByTagName("li");
-  console.log(list);
   
-  
-  for(let i=0;i<list.length;i++){
-    list[i].style.fontWeight="bold";
-  }
-  
+  // console.log(typeof list1)
+
+
+ 
 
 
 </script>
