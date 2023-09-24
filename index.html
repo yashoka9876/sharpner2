@@ -58,6 +58,8 @@
     e.preventDefault();
     let newItem=document.getElementById('item').value;
     let discription=document.getElementById('discription').value;
+    //store this input data to the local storage
+     localStorage.setItem(newItem,discription);
    let dis=document.createTextNode(" "+discription);
     let textNode=document.createTextNode(newItem);
 
@@ -83,10 +85,16 @@
     list.appendChild(btn);
   }
   function removefun(e){
+    if(e.target.classList.contains('delete')){
+        localStorage.removeItem(e.target.parentElement.firstChild);
+         console.log( typeof e.target.parentElement.firstChild);
+    }
    if(e.target.classList.contains('delete')){
     if(confirm('Are you Sure?')){
       var li=e.target.parentElement;
       ulist.removeChild(li);
+      localStorage.removeItem("mytime");
+
     }
    }
 
