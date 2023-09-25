@@ -59,7 +59,13 @@
     let newItem=document.getElementById('item').value;
     let discription=document.getElementById('discription').value;
     //store this input data to the local storage
-     localStorage.setItem(newItem,discription);
+    //  localStorage.setItem(newItem,discription);
+    obj={
+      1:{item:newItem,dis:discription}
+    }
+    console.log(JSON.stringify(obj));
+
+     //Now here we will store data in the form of object
    let dis=document.createTextNode(" "+discription);
     let textNode=document.createTextNode(newItem);
 
