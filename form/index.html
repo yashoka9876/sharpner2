@@ -15,20 +15,63 @@
 </body>
 <script>
     let fm=document.getElementById('form');
+    let ul=document.createElement('ul');
+    ul.setAttribute('style','border:5px solid red;width:500px');
+    
     fm.addEventListener('submit',(e)=>{
         e.preventDefault()
-        let email=document.getElementById('email').value;
         let name=document.getElementById('name').value;
         let number=document.getElementById('no').value;
+        var email=document.getElementById('email').value;
 
-        let obj={
-            email:email,
-            name:name,
-            number:number
-        }
-        // console.log(JSON.stringify(obj));
-       
+        let obj={email:email,name:name,number:number }
+        //  console.log(JSON.stringify(obj));
+        
           localStorage.setItem(""+email,JSON.stringify(obj));
+        let li=document.createElement('li');
+        //I just create button over here.
+        let btn=document.createElement('input');
+        btn.setAttribute("type", "button");
+        btn.setAttribute('value','delete');
+        btn.setAttribute('style','margin:10px;padding:10px');
+        btn.classList="delete";
+      //  console.log(btn);
+            var a=`${email}-${name}-${number}`;
+            document.createTextNode(a);
+            li.appendChild(document.createTextNode(a));
+            li.appendChild(btn);
+
+       // ul.appendChild(document.createTextNode(email));
+        ul.appendChild(li);
+        fm.append(ul);
+
     })
+
+    //this fuction is going to help us for what to remove the li form the ul let's see what happen
+
+     ul.addEventListener('click',removefun)
+    
+
+    function removefun(e){
+        // if(e.target.classList.contains('delete')){
+        //     // localStorage.removeItem(e.target.parentElement.firstChild);
+        //     // console.log( typeof e.target.parentElement.firstChild);
+        //     console.log("Hai this is ashoka yadav");
+        // }
+        if(e.target.classList.contains('delete')){
+            if(confirm('Are you Sure?')){
+            var li=e.target.parentElement;
+            ul.removeChild(li);
+            // console.log(email.value);
+            //    console.log(li.firstChild.textContent.split('-')[0]);
+             localStorage.removeItem(li.firstChild.textContent.split('-')[0]);
+
+            
+            }
+        }
+        // console.log(e);
+
+
+  }
 </script>
 </html>
