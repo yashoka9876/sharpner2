@@ -7,7 +7,7 @@
 </head>
 <body>
     <form id="form">
-        <input type="email" placeholder="email" id="email">
+        <input type="email" placeholder="email" id="email" >
         <input type="text" placeholder="name" id="name">
         <input type="number" placeholder="number" id="no">
         <input type="submit">
@@ -17,12 +17,16 @@
     let fm=document.getElementById('form');
     let ul=document.createElement('ul');
     ul.setAttribute('style','border:5px solid red;width:500px');
+
+
+
+
     
+    let  email=document.getElementById('email');
+    let  name=document.getElementById('name');
+    let  number=document.getElementById('no');
     fm.addEventListener('submit',(e)=>{
         e.preventDefault()
-        let name=document.getElementById('name').value;
-        let number=document.getElementById('no').value;
-        var email=document.getElementById('email').value;
 
         let obj={email:email,name:name,number:number }
         //  console.log(JSON.stringify(obj));
@@ -35,43 +39,65 @@
         btn.setAttribute('value','delete');
         btn.setAttribute('style','margin:10px;padding:10px');
         btn.classList="delete";
+
+        let edt=document.createElement('input');
+        edt.setAttribute('type','button');
+        edt.setAttribute('value','edit');
+        edt.setAttribute('style','margin:10px;padding:10px');
+        edt.classList="edit"
+        
       //  console.log(btn);
-            var a=`${email}-${name}-${number}`;
+            var a=`${email.value}-${name.value}-${number.value}`;
             document.createTextNode(a);
             li.appendChild(document.createTextNode(a));
+            li.appendChild(edt);
             li.appendChild(btn);
 
        // ul.appendChild(document.createTextNode(email));
         ul.appendChild(li);
         fm.append(ul);
 
+
+       
     })
 
     //this fuction is going to help us for what to remove the li form the ul let's see what happen
 
      ul.addEventListener('click',removefun)
     
+     function removefun(e){
+       
+         if(e.target.classList.contains('delete')){
+             if(confirm('Are you Sure?')){
+                 var li=e.target.parentElement;
+                 // console.log(email.value);
+                 //    console.log(li.firstChild.textContent.split('-')[0]);
+                 localStorage.removeItem(li.firstChild.textContent.split('-')[0]);
+                 
+                 ul.removeChild(li);
+                 
+                }
+            }
+            
+            
+        }
+        
+        ul.addEventListener('click',edit)
 
-    function removefun(e){
-        // if(e.target.classList.contains('delete')){
-        //     // localStorage.removeItem(e.target.parentElement.firstChild);
-        //     // console.log( typeof e.target.parentElement.firstChild);
-        //     console.log("Hai this is ashoka yadav");
-        // }
-        if(e.target.classList.contains('delete')){
-            if(confirm('Are you Sure?')){
+        /// THis is edit function 
+  function edit(e){
+    if(e.target.classList.contains('edit')){
+            
             var li=e.target.parentElement;
-            ul.removeChild(li);
             // console.log(email.value);
             //    console.log(li.firstChild.textContent.split('-')[0]);
-             localStorage.removeItem(li.firstChild.textContent.split('-')[0]);
-
+            localStorage.removeItem(li.firstChild.textContent.split('-')[0]);
             
+            name.value=li.firstChild.textContent.split('-')[1];
+            email.value=li.firstChild.textContent.split('-')[0];
+            number.value=li.firstChild.textContent.split('-')[2];
+            ul.removeChild(li);
             }
-        }
-        // console.log(e);
-
-
   }
 </script>
 </html>
